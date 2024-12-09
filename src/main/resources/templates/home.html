@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Welcome to the Home Page</h1>
+    <div th:if="${user != null}">
+        <p>Hello, <span th:text="${user.firstName}"></span>!</p>
+        <p>Your roles: <span th:text="${user.roles}"></span>!</p>
+        <a th:href="@{/user/profile}" class="button-link">Edit Profile</a>
+        <a th:if="${user.roles.contains('ADMIN')}" th:href="@{/admin/users}" class="button-link">Admin Panel</a>
+        <form th:action="@{/logout}" method="post" style="display:inline;">
+            <button type="submit" class="button-link">Logout</button>
+        </form>
+    </div>
+    <div th:unless="${user != null}">
+        <a th:href="@{/login}" class="button-link">Login</a>
+    </div>
+</div>
+</body>
+</html>
