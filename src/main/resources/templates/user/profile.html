@@ -1,36 +1,39 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>User Profile</title>
+    <title>Профиль</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
 </head>
 <body>
 <div class="container">
-    <h1>User Profile</h1>
+    <h1>Профиль</h1>
     <form method="post" th:action="@{/user/profile}" th:object="${userDTO}">
         <input type="hidden" th:field="*{id}">
         <input type="hidden" th:field="*{roles}">
-        <label for="username">Username:</label>
+        <label for="username">Логин:</label>
         <input type="text" id="username" th:field="*{username}" readonly>
         <br>
-        <label for="firstName">First Name:</label>
+        <label for="firstName">Имя:</label>
         <input type="text" id="firstName" th:field="*{firstName}" required>
         <br>
-        <label for="lastName">Last Name:</label>
+        <label for="lastName">Фамилия:</label>
         <input type="text" id="lastName" th:field="*{lastName}" required>
         <br>
         <label for="email">Email:</label>
         <input type="email" id="email" th:field="*{email}" required>
         <br>
-        <label for="password">New Password:</label>
+        <label for="password">Новый пароль:</label>
         <input type="password" id="password" th:field="*{password}">
         <br>
-        <label for="confirmPassword">Confirm New Password:</label>
+        <label for="confirmPassword">Подтверждение пароля:</label>
         <input type="password" id="confirmPassword" th:field="*{confirmPassword}">
         <br>
-        <button type="submit" class="button-link">Update Profile</button>
+        <button type="submit" class="button-link">Обновить профиль</button>
     </form>
-    <a th:href="@{/}" class="button-link">Back to Home</a>
+    <a th:href="@{/}" class="button-link">На главную</a>
+    <form th:action="@{/logout}" method="post" style="display:inline;">
+        <button type="submit" class="button-link">Выйти</button>
+    </form>
 </div>
 </body>
 </html>

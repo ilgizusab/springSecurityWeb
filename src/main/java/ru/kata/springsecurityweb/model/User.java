@@ -22,13 +22,13 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = true)
+    @Column
     private String firstName;
 
-    @Column(nullable = true)
+    @Column
     private String lastName;
 
-    @Column(nullable = true)
+    @Column
     private String email;
 
     @ManyToMany(fetch = FetchType.EAGER)

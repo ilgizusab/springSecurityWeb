@@ -8,6 +8,7 @@ class SpringSecurityWebApplicationTests {
 
     @Test
     void contextLoads() {
+        //TO-DO сделать тесты
     }
 
 }

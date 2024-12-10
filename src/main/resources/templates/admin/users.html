@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Admin - Users</title>
+    <title>Список пользователей</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
 </head>
 <body>
 <div class="container">
-    <h1>Users</h1>
+    <h1>Пользователи</h1>
     <table>
         <thead>
         <tr>
             <th>ID</th>
-            <th>Username</th>
-            <th>First Name</th>
-            <th>Last Name</th>
+            <th>Логин</th>
+            <th>Имя</th>
+            <th>Фамилия</th>
             <th>Email</th>
-            <th>Actions</th>
+            <th>Действия</th>
         </tr>
         </thead>
         <tbody>
@@ -26,13 +26,16 @@
             <td th:text="${user.lastName}"></td>
             <td th:text="${user.email}"></td>
             <td>
-                <a th:href="@{/admin/users/edit/{id}(id=${user.id})}" class="button-link">Edit</a>
-                <a th:href="@{/admin/users/delete/{id}(id=${user.id})}" class="button-link">Delete</a>
+                <a th:href="@{/admin/users/edit/{id}(id=${user.id})}" class="button-link">Изменить</a>
+                <a th:href="@{/admin/users/delete/{id}(id=${user.id})}" class="button-link">Удалить</a>
             </td>
         </tr>
         </tbody>
     </table>
-    <a th:href="@{/}" class="button-link">Back to Home</a>
+    <a th:href="@{/}" class="button-link">На главную</a>
+    <form th:action="@{/logout}" method="post" style="display:inline;">
+        <button type="submit" class="button-link">Выйти</button>
+    </form>
 </div>
 </body>
 </html>

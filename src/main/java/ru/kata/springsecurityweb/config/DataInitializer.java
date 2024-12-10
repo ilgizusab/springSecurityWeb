@@ -9,19 +9,25 @@ import ru.kata.springsecurityweb.repository.RoleRepository;
 import ru.kata.springsecurityweb.repository.UserRepository;
 
 import jakarta.annotation.PostConstruct;
+
 import java.util.Set;
 
 @Component
 public class DataInitializer {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+
+    private final RoleRepository roleRepository;
+
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    private RoleRepository roleRepository;
+    public DataInitializer(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
+        this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
 
     @PostConstruct
     public void init() {

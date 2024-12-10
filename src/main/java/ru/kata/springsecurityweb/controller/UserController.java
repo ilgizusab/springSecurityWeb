@@ -10,13 +10,16 @@ import ru.kata.springsecurityweb.dto.UserDTO;
 import ru.kata.springsecurityweb.service.UserService;
 
 @Controller
-@RequestMapping("/user")
 public class UserController {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
 
-    @GetMapping("/profile")
+    @Autowired
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
+    @GetMapping("/user/profile")
     public String profile(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         UserDTO userDTO = userService.getUserDTOByUsername(auth.getName());
@@ -24,9 +27,9 @@ public class UserController {
         return "user/profile";
     }
 
-    @PostMapping("/profile")
+    @PostMapping("/user/profile")
     public String updateProfile(@ModelAttribute("userDTO") UserDTO userDTO) {
         userService.saveUser(userDTO);
-        return "redirect:/user/profile";
+        return "redirect:/";
     }
 }

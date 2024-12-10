@@ -11,9 +11,7 @@ public class UserDTO {
     private String email;
     private String password;
     private String confirmPassword;
-    private List<String> roles = new ArrayList<>(); // Инициализация списка ролей
-
-    // Getters and Setters
+    private List<String> roles = new ArrayList<>();
 
     public Long getId() {
         return id;

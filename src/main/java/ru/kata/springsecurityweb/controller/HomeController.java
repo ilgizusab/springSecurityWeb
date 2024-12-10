@@ -12,8 +12,12 @@ import ru.kata.springsecurityweb.service.UserService;
 @Controller
 public class HomeController {
 
+    private final UserService userService;
+
     @Autowired
-    private UserService userService;
+    public HomeController(UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping("/")
     public String home(Model model) {
